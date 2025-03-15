@@ -2,7 +2,7 @@ name: WhatsApp Bot
 
 on:
   schedule:
-    - cron: '0 18 * * *'  # Runs every day at 18:00 UTC (adjust as needed)
+    - cron: '47 15 * * *'  # Runs every day at 18:00 UTC (adjust as needed)
   workflow_dispatch:  # Allows you to trigger the workflow manually
 
 jobs:
@@ -19,7 +19,9 @@ jobs:
           node-version: '16'
 
       - name: 📦 Install Dependencies
-        run: npm install
+        run: |
+          npm install  # Installs the dependencies in the repository
 
       - name: 🚀 Run WhatsApp Bot
-        run: node bot.js
+        run: |
+          npm start  # Runs the bot using the start script defined in package.json
