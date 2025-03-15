@@ -1,8 +1,9 @@
 const qrcode = require('qrcode-terminal');
 const { Client, LocalAuth } = require('whatsapp-web.js');
 
+// Use LocalAuth to save the session so you don't need to scan QR every time
 const client = new Client({
-    authStrategy: new LocalAuth()  // Saves session data for reuse
+    authStrategy: new LocalAuth()  // Uses saved session from the previous run
 });
 
 client.on('qr', qr => {
