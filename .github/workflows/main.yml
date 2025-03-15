@@ -1,0 +1,25 @@
+name: WhatsApp Bot
+
+on:
+  schedule:
+    - cron: '0 18 * * *'  # Runs every day at 18:00 UTC (adjust as needed)
+  workflow_dispatch:  # Allows you to trigger the workflow manually
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: 🟢 Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🚀 Run WhatsApp Bot
+        run: node bot.js
